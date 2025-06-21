@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Менеджер задач</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Менеджер задач</h1>
+        <button id="logout-btn">Выйти</button>
+    </header>
+    
+    <div class="container">
+        <div class="filters">
+            <select id="status-filter">
+                <option value="">Все статусы</option>
+                <option value="Новая">Новая</option>
+                <option value="В работе">В работе</option>
+                <option value="Завершена">Завершена</option>
+            </select>
+            <button id="apply-filters">Применить</button>
+            <button id="add-task">Добавить задачу</button>
+        </div>
+        
+        <div class="task-list" id="task-list">
+            <!-- Задачи будут загружаться здесь -->
+        </div>
+    </div>
+    
+    <!-- Модальное окно для создания/редактирования задачи -->
+    <div id="task-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modal-title">Новая задача</h2>
+            <form id="task-form">
+                <input type="hidden" id="task-id">
+                <div class="form-group">
+                    <label for="title">Название:</label>
+                    <input type="text" id="title" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">Описание:</label>
+                    <textarea id="description"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="status">Статус:</label>
+                    <select id="status">
+                        <option value="Новая">Новая</option>
+                        <option value="В работе">В работе</option>
+                        <option value="Завершена">Завершена</option>
+                    </select>
+                </div>
+                <button type="submit">Сохранить</button>
+            </form>
+        </div>
+    </div>
+    
+    <script src="/js/tasks.js"></script>
+</body>
+</html>
