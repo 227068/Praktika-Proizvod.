@@ -1,7 +1,11 @@
-# frontend/Dockerfile
-FROM nginx:alpine
+# backend/Dockerfile
+FROM python:3.11-slim
 
-COPY ./frontend /usr/share/nginx/html
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+WORKDIR /app
 
-EXPOSE 80
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
